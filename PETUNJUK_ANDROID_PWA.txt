@@ -1,0 +1,26 @@
+OFFICEQUEST — VERSI PWA ANDROID
+================================
+
+PENTING:
+PWA memerlukan hosting HTTPS untuk proses instalasi dan service worker.
+Membuka index.html langsung dari folder HP tidak mengaktifkan instalasi PWA.
+
+CARA MENYIAPKAN:
+1. Unggah SELURUH isi folder OFFICEQUEST_OFFLINE ke hosting HTTPS statis.
+   Contoh: GitHub Pages atau layanan hosting statis lain.
+2. Pastikan index.html, manifest.json, sw.js, dan folder icons berada
+   pada lokasi yang sama seperti di dalam ZIP ini.
+3. Buka alamat HTTPS aplikasi menggunakan Google Chrome di Android.
+4. Tunggu halaman selesai dimuat dan service worker selesai memasang cache.
+5. Buka menu Chrome (titik tiga), pilih "Instal aplikasi" atau
+   "Tambahkan ke layar utama" jika pilihan instal belum muncul.
+6. Jalankan OFFICEQUEST dari ikon di layar utama.
+7. Uji dengan mode pesawat setelah aplikasi berhasil dibuka online
+   setidaknya satu kali.
+
+CATATAN:
+- Isi materi, pertanyaan, dan jawaban pada index.html tidak diubah.
+- PWA ini menyimpan file aplikasi yang disertakan di paket.
+- Jika materi/file diubah kemudian, versi cache perlu diperbarui.
+- Progres kuis disimpan di browser/perangkat masing-masing.
+- Tidak semua fitur eksternal Microsoft dapat berjalan offline.

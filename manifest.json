@@ -1,0 +1,27 @@
+{
+  "id": "./",
+  "name": "OFFICEQUEST - Petualangan Microsoft Office",
+  "short_name": "OFFICEQUEST",
+  "description": "Media pembelajaran interaktif Microsoft Office untuk digunakan secara offline.",
+  "lang": "id",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4f7fc",
+  "theme_color": "#14264b",
+  "icons": [
+    {
+      "src": "icons/officequest-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/officequest-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OFFICEQUEST — Petualangan Microsoft Office</title>
+<style>
+:root{--navy:#14264b;--blue:#2864dc;--sky:#eaf1ff;--ink:#17233d;--muted:#66738c;--gold:#ffca55;--white:#fff;--line:#e4eaf4;--green:#16865b}
+*{box-sizing:border-box}body{margin:0;background:#f4f7fc;color:var(--ink);font:15px/1.55 "Segoe UI",Arial,sans-serif}
+header{background:linear-gradient(120deg,#14264b,#285bd0);color:white;padding:26px max(20px,calc((100% - 1120px)/2));}
+.top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}.brand{font-weight:900;letter-spacing:1.5px;font-size:24px}.brand span{color:var(--gold)}
+.tag{font-size:12px;background:#ffffff20;border:1px solid #ffffff50;padding:6px 11px;border-radius:20px}
+.hero{max-width:1120px;margin:25px auto 8px}.hero h1{font-size:clamp(27px,5vw,42px);line-height:1.12;margin:0 0 10px}.hero p{max-width:680px;color:#e0eaff;margin:0}
+main{max-width:1120px;margin:24px auto;padding:0 18px 50px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}.stat,.panel,.card{background:white;border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:0 5px 18px #172b4d08}
+.stat strong{display:block;font-size:24px;color:var(--blue)}.stat small{color:var(--muted)}
+.layout{display:grid;grid-template-columns:245px 1fr;gap:18px}.side{align-self:start;position:sticky;top:12px}.navbtn{width:100%;border:0;background:transparent;text-align:left;padding:12px;border-radius:10px;color:var(--ink);font-weight:650;cursor:pointer;margin:2px 0}.navbtn.active,.navbtn:hover{background:var(--sky);color:var(--blue)}
+.content h2{margin:0 0 5px;font-size:25px}.sub{color:var(--muted);margin:0 0 18px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{cursor:pointer;transition:.15s}.card:hover{transform:translateY(-2px);border-color:#a9c2fa}.icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:25px;background:var(--sky);margin-bottom:12px}.card h3{margin:0 0 5px}.card p{margin:0;color:var(--muted);font-size:13px}.pill{display:inline-block;background:#edf3ff;color:#285bd0;padding:4px 9px;border-radius:20px;font-size:11px;font-weight:700;margin-top:12px}
+.section{display:none}.section.active{display:block}.lesson{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:14px}.lesson h3{margin:0 0 8px}.lesson ul{padding-left:20px}.callout{background:#fff8e5;border-left:4px solid var(--gold);padding:12px 14px;border-radius:8px;margin:14px 0}
+button.primary,button.secondary{border:0;border-radius:10px;padding:11px 16px;font-weight:700;cursor:pointer}.primary{background:var(--blue);color:white}.secondary{background:#edf2fb;color:var(--navy)}button:disabled{opacity:.5;cursor:not-allowed}
+.q{background:#fff;border:1px solid var(--line);padding:18px;border-radius:14px;margin:12px 0}.q label{display:block;padding:8px 10px;border:1px solid var(--line);border-radius:9px;margin:7px 0;cursor:pointer}.q label:hover{background:#f4f7ff}.feedback{font-weight:700;margin-top:10px}.good{color:var(--green)}.bad{color:#b54b35}
+.progress{height:10px;background:#e7edf7;border-radius:20px;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,#2864dc,#45b8dc);width:0}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:25px}
+input[type=text]{padding:11px;border:1px solid var(--line);border-radius:9px;width:min(100%,340px);font:inherit}
+table{border-collapse:collapse;width:100%;margin:12px 0}td,th{border:1px solid var(--line);padding:9px;text-align:left}th{background:#f1f5fc}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.side{position:static;display:grid;grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.hero{margin-top:18px}}
+</style>
+
+<meta name="theme-color" content="#14264b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="OFFICEQUEST">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/officequest-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/officequest-192.png">
+
+</head>
+<body>
+<header>
+ <div class="top"><div class="brand">OFFICE<span>QUEST</span></div><div class="tag">MEDIA PEMBELAJARAN INFORMATIKA • MODE OFFLINE</div></div>
+ <div class="hero"><h1>Jelajahi Dunia<br>Microsoft Office!</h1><p>Pelajari, praktikkan, dan selesaikan misi. Kumpulkan poin dari setiap tantangan untuk menjadi Office Explorer.</p></div>
+</header>
+<main>
+ <div class="stats">
+  <div class="stat"><strong id="pointStat">0 XP</strong><small>Total poin belajar</small></div>
+  <div class="stat"><strong id="doneStat">0 / 4</strong><small>Misi diselesaikan</small></div>
+  <div class="stat"><strong id="rankStat">Pemula</strong><small>Level Office Explorer</small></div>
+ </div>
+ <div class="layout">
+  <aside class="panel side">
+   <button class="navbtn active" data-target="home">🏠 Beranda</button>
+   <button class="navbtn" data-target="word">📝 Misi Word</button>
+   <button class="navbtn" data-target="excel">📊 Misi Excel</button>
+   <button class="navbtn" data-target="powerpoint">🎞️ Misi PowerPoint</button>
+   <button class="navbtn" data-target="other">🧩 Office Lainnya</button>
+   <button class="navbtn" data-target="quiz">🏆 Kuis Akhir</button>
+   <button class="navbtn" data-target="profile">⭐ Progres Saya</button>
+  </aside>
+  <section class="content">
+   <div id="home" class="section active">
+    <h2>Selamat datang, Office Explorer!</h2><p class="sub">Pilih misi dan mulai petualangan belajarmu.</p>
+    <div class="grid">
+     <div class="card" onclick="show('word')"><div class="icon">📝</div><h3>Misi 1: Microsoft Word</h3><p>Membuat dokumen yang rapi dan informatif.</p><span class="pill">Pengolah kata</span></div>
+     <div class="card" onclick="show('excel')"><div class="icon">📊</div><h3>Misi 2: Microsoft Excel</h3><p>Mengolah data, tabel, dan perhitungan.</p><span class="pill">Pengolah angka</span></div>
+     <div class="card" onclick="show('powerpoint')"><div class="icon">🎞️</div><h3>Misi 3: PowerPoint</h3><p>Menyampaikan ide melalui presentasi.</p><span class="pill">Presentasi</span></div>
+     <div class="card" onclick="show('other')"><div class="icon">🧩</div><h3>Misi 4: Office Lainnya</h3><p>Mengenal aplikasi pendukung produktivitas.</p><span class="pill">Produktivitas</span></div>
+    </div>
+    <div class="callout"><b>Petunjuk:</b> Baca materi, lakukan tantangan praktik, lalu kerjakan Kuis Akhir. Progres dan poin tersimpan di browser pada perangkat ini.</div>
+   </div>
+   <div id="word" class="section">
+    <h2>📝 Misi 1 — Microsoft Word</h2><p class="sub">Mengolah kata dan menyusun dokumen.</p>
+    <div class="lesson"><h3>Apa itu Microsoft Word?</h3><p>Microsoft Word adalah aplikasi pengolah kata untuk membuat, mengedit, memformat, menyimpan, dan mencetak dokumen seperti surat, laporan, makalah, serta undangan.</p><h3>Fitur penting</h3><ul><li><b>Font:</b> mengatur jenis, ukuran, dan warna huruf.</li><li><b>Paragraph:</b> mengatur perataan, spasi, dan indentasi.</li><li><b>Insert:</b> menambahkan tabel, gambar, bentuk, dan nomor halaman.</li><li><b>Layout:</b> mengatur ukuran kertas, margin, dan orientasi.</li><li><b>Review:</b> memeriksa ejaan dan memberi komentar.</li></ul><div class="callout">Tips: gunakan judul dan subjudul secara konsisten agar dokumen mudah dibaca.</div></div>
+    <div class="lesson"><h3>🎯 Tantangan praktik</h3><ol><li>Buat dokumen berjudul <b>“Kegiatan Literasi Sekolah”</b>.</li><li>Ketik dua paragraf tentang kegiatan membaca.</li><li>Buat judul tebal dan rata tengah.</li><li>Tambahkan satu gambar atau tabel sederhana.</li><li>Simpan dengan nama <b>Latihan_Word_Nama</b>.</li></ol><button class="primary" onclick="complete('word')">Tandai misi Word selesai (+20 XP)</button></div>
+   </div>
+   <div id="excel" class="section">
+    <h2>📊 Misi 2 — Microsoft Excel</h2><p class="sub">Mengolah angka dan membaca data.</p>
+    <div class="lesson"><h3>Apa itu Microsoft Excel?</h3><p>Microsoft Excel adalah aplikasi spreadsheet untuk memasukkan data, melakukan perhitungan, menganalisis informasi, dan menyajikan data dalam tabel atau grafik.</p><h3>Istilah dasar</h3><ul><li><b>Workbook:</b> file Excel.</li><li><b>Worksheet:</b> lembar kerja.</li><li><b>Cell:</b> kotak pertemuan kolom dan baris, misalnya A1.</li><li><b>Range:</b> kumpulan sel, misalnya A1:A5.</li><li><b>Formula:</b> rumus yang diawali tanda sama dengan (=).</li></ul><h3>Rumus dasar</h3><table><tr><th>Rumus</th><th>Fungsi</th></tr><tr><td>=SUM(A1:A5)</td><td>Menjumlahkan data</td></tr><tr><td>=AVERAGE(A1:A5)</td><td>Menghitung rata-rata</td></tr><tr><td>=MAX(A1:A5)</td><td>Mencari nilai terbesar</td></tr><tr><td>=MIN(A1:A5)</td><td>Mencari nilai terkecil</td></tr><tr><td>=COUNT(A1:A5)</td><td>Menghitung sel berisi angka</td></tr><tr><td>=COUNTIF(A1:A5,"Lulus")</td><td>Menghitung sesuai kriteria</td></tr></table></div>
+    <div class="lesson"><h3>🎯 Tantangan praktik</h3><ol><li>Buat tabel nama siswa dan nilai tiga tugas.</li><li>Hitung jumlah nilai menggunakan SUM.</li><li>Hitung rata-rata menggunakan AVERAGE.</li><li>Tentukan nilai tertinggi dan terendah.</li><li>Buat grafik batang dari data nilai.</li></ol><button class="primary" onclick="complete('excel')">Tandai misi Excel selesai (+20 XP)</button></div>
+   </div>
+   <div id="powerpoint" class="section">
+    <h2>🎞️ Misi 3 — Microsoft PowerPoint</h2><p class="sub">Mengubah gagasan menjadi presentasi visual.</p>
+    <div class="lesson"><h3>Apa itu PowerPoint?</h3><p>Microsoft PowerPoint adalah aplikasi untuk membuat dan menampilkan presentasi berbentuk slide. Presentasi dapat berisi teks, gambar, tabel, grafik, audio, dan video.</p><h3>Fitur penting</h3><ul><li><b>New Slide:</b> menambah slide.</li><li><b>Layout:</b> memilih susunan isi slide.</li><li><b>Design/Theme:</b> mengatur tampilan dan tema.</li><li><b>Transition:</b> efek perpindahan antarslide.</li><li><b>Animation:</b> efek pada objek di dalam slide.</li><li><b>Slide Show:</b> menampilkan presentasi.</li></ul><div class="callout">Tips desain: satu slide sebaiknya memuat satu gagasan utama. Gunakan teks singkat, ukuran huruf terbaca, dan warna yang kontras.</div></div>
+    <div class="lesson"><h3>🎯 Tantangan praktik</h3><ol><li>Buat presentasi 4 slide bertema “Bijak Menggunakan Teknologi”.</li><li>Slide 1: judul dan identitas.</li><li>Slide 2: pengertian teknologi digital.</li><li>Slide 3: manfaat dan risiko.</li><li>Slide 4: kesimpulan dan ajakan.</li><li>Gunakan tema, gambar, dan transisi secukupnya.</li></ol><button class="primary" onclick="complete('powerpoint')">Tandai misi PowerPoint selesai (+20 XP)</button></div>
+   </div>
+   <div id="other" class="section">
+    <h2>🧩 Misi 4 — Aplikasi Office Lainnya</h2><p class="sub">Kenali aplikasi lain dalam ekosistem Microsoft.</p>
+    <div class="grid">
+     <div class="lesson"><h3>✉️ Outlook</h3><p>Mengelola email, kalender, kontak, dan jadwal kegiatan.</p></div>
+     <div class="lesson"><h3>📓 OneNote</h3><p>Mencatat dan mengorganisasi catatan digital dalam buku catatan.</p></div>
+     <div class="lesson"><h3>🗃️ Access</h3><p>Mengelola basis data, tabel, formulir, kueri, dan laporan.</p></div>
+     <div class="lesson"><h3>☁️ OneDrive</h3><p>Menyimpan dan menyinkronkan file melalui layanan cloud; sinkronisasi memerlukan internet.</p></div>
+     <div class="lesson"><h3>💬 Teams</h3><p>Mendukung komunikasi, rapat, dan kolaborasi kelas atau kelompok.</p></div>
+     <div class="lesson"><h3>📝 Forms</h3><p>Membuat formulir, survei, dan kuis online.</p></div>
+    </div>
+    <div class="lesson"><div class="callout">Catatan: nama, ketersediaan, dan fitur aplikasi dapat berbeda menurut versi Microsoft Office atau paket Microsoft 365. Beberapa layanan memerlukan akun dan internet.</div><button class="primary" onclick="complete('other')">Tandai misi Office Lainnya selesai (+20 XP)</button></div>
+   </div>
+   <div id="quiz" class="section">
+    <h2>🏆 Kuis Akhir OfficeQuest</h2><p class="sub">Jawab 10 pertanyaan untuk menguji pemahamanmu. Pilih satu jawaban pada setiap soal.</p>
+    <div id="quizArea"></div><button class="primary" id="submitQuiz" onclick="gradeQuiz()">Periksa Jawaban</button><div id="quizResult" aria-live="polite"></div>
+   </div>
+   <div id="profile" class="section">
+    <h2>⭐ Progres Saya</h2><p class="sub">Pantau perjalanan belajarmu di perangkat ini.</p>
+    <div class="lesson"><h3 id="profileRank">Pemula</h3><p><b id="profilePoints">0 XP</b> terkumpul</p><div class="progress"><span id="progressBar"></span></div><p id="progressText" class="sub">0 dari 4 misi selesai.</p><p id="completedList">Belum ada misi yang diselesaikan.</p><button class="secondary" onclick="resetProgress()">Atur ulang progres</button></div>
+    <div class="callout">Progres disimpan menggunakan penyimpanan lokal browser (localStorage). Data tidak otomatis berpindah ke komputer lain atau browser lain.</div>
+   </div>
+  </section>
+ </div>
+</main>
+<footer>OFFICEQUEST • Media Pembelajaran Informatika • Dibuat untuk penggunaan lokal/offline</footer>
+<script>
+const missions=['word','excel','powerpoint','other'];
+let state=JSON.parse(localStorage.getItem('officequest_state')||'{"xp":0,"done":[]}');
+function save(){localStorage.setItem('officequest_state',JSON.stringify(state));updateStats()}
+function rank(){return state.xp>=100?'Office Master':state.xp>=60?'Office Adventurer':state.xp>=20?'Office Explorer':'Pemula'}
+function updateStats(){
+ document.getElementById('pointStat').textContent=state.xp+' XP';
+ document.getElementById('doneStat').textContent=state.done.length+' / 4';
+ document.getElementById('rankStat').textContent=rank();
+ document.getElementById('profileRank').textContent=rank();
+ document.getElementById('profilePoints').textContent=state.xp+' XP';
+ document.getElementById('progressBar').style.width=(state.done.length/4*100)+'%';
+ document.getElementById('progressText').textContent=state.done.length+' dari 4 misi selesai.';
+ document.getElementById('completedList').textContent=state.done.length?'Misi selesai: '+state.done.map(x=>({word:'Word',excel:'Excel',powerpoint:'PowerPoint',other:'Office Lainnya'}[x])).join(', '):'Belum ada misi yang diselesaikan.';
+}
+function show(id){
+ document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));
+ document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.target===id));
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.navbtn').forEach(b=>b.addEventListener('click',()=>show(b.dataset.target)));
+function complete(id){
+ if(!state.done.includes(id)){state.done.push(id);state.xp+=20;save();alert('Hebat! Misi berhasil ditandai selesai. Kamu mendapat 20 XP.');}
+ else alert('Misi ini sudah tercatat selesai. Tetap semangat!');
+}
+const questions=[
+ ['Aplikasi yang digunakan untuk membuat surat dan laporan adalah …',['Microsoft Excel','Microsoft Word','Microsoft Access','Microsoft Outlook'],1],
+ ['Pertemuan kolom dan baris pada Excel disebut …',['Slide','Cell','Folder','Range'],1],
+ ['Rumus Excel untuk menjumlahkan data adalah …',['=SUM()','=TEXT()','=SAVE()','=SLIDE()'],0],
+ ['Fungsi AVERAGE digunakan untuk …',['Nilai terbesar','Menghitung rata-rata','Menghapus data','Mengurutkan slide'],1],
+ ['Aplikasi untuk membuat presentasi adalah …',['Word','Access','PowerPoint','OneNote'],2],
+ ['Efek perpindahan dari satu slide ke slide lain disebut …',['Transition','Formula','Filter','Margin'],0],
+ ['Aplikasi yang umum digunakan untuk mengelola email adalah …',['Paint','Outlook','Excel','Access'],1],
+ ['Aplikasi pencatat digital dari Microsoft adalah …',['OneNote','PowerPoint','Forms','Teams'],0],
+ ['Layanan penyimpanan file berbasis cloud Microsoft adalah …',['OneDrive','WordPad','Calculator','Notepad'],0],
+ ['Tanda awal penulisan rumus pada Excel adalah …',['#','= ','@','&'],1]
+];
+function renderQuiz(){
+ const area=document.getElementById('quizArea');
+ area.innerHTML=questions.map((q,i)=>`<div class="q"><b>${i+1}. ${q[0]}</b>${q[1].map((a,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${a}</label>`).join('')}<div id="fb${i}" class="feedback"></div></div>`).join('');
+}
+function gradeQuiz(){
+ let score=0,answered=0;
+ questions.forEach((q,i)=>{
+  const chosen=document.querySelector(`input[name="q${i}"]:checked`);
+  const fb=document.getElementById('fb'+i);
+  if(chosen){answered++;if(Number(chosen.value)===q[2]){score++;fb.textContent='Benar!';fb.className='feedback good'}else{fb.textContent='Belum tepat. Jawaban benar: '+q[1][q[2]];fb.className='feedback bad'}}
+  else{fb.textContent='Belum dijawab.';fb.className='feedback bad'}
+ });
+ if(answered<questions.length){document.getElementById('quizResult').innerHTML='<p class="bad">Masih ada soal yang belum dijawab. Lengkapi semua soal, lalu periksa kembali.</p>';return}
+ const xp=score*2;state.xp+=xp;save();
+ document.getElementById('quizResult').innerHTML=`<div class="lesson"><h3>Hasil: ${score} / ${questions.length}</h3><p>Kamu memperoleh <b>${xp} XP</b>.</p><p>${score>=8?'Luar biasa! Pemahamanmu sudah sangat baik.':score>=6?'Bagus! Terus berlatih agar semakin mahir.':'Tetap semangat! Pelajari kembali materi dan coba lagi.'}</p></div>`;
+ document.getElementById('submitQuiz').disabled=true;
+}
+function resetProgress(){if(confirm('Yakin ingin menghapus seluruh progres dan poin di perangkat ini?')){state={xp:0,done:[]};save();document.getElementById('submitQuiz').disabled=false;document.getElementById('quizResult').innerHTML='';}}
+renderQuiz();updateStats();
+</script>
+
+<script>
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch((err) => {
+      console.error("OFFICEQUEST offline setup:", err);
+    });
+  });
+}
+</script>
+
+</body></html>

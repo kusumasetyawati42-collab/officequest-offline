@@ -1,0 +1,22 @@
+OFFICEQUEST OFFLINE
+===================
+
+CARA MENJALANKAN
+1. Ekstrak file OFFICEQUEST_OFFLINE.zip.
+2. Buka folder OFFICEQUEST_OFFLINE.
+3. Klik dua kali index.html.
+4. Aplikasi akan terbuka di browser (misalnya Chrome atau Edge).
+5. Setelah file tersimpan di laptop, aplikasi dapat dijalankan tanpa internet.
+
+FITUR
+- Materi Microsoft Word, Excel, PowerPoint, dan aplikasi Microsoft lainnya.
+- Tantangan praktik.
+- Kuis 10 soal dengan pemeriksaan jawaban dan skor.
+- XP, level, dan progres tersimpan di browser pada perangkat yang sama.
+
+CATATAN
+- Aplikasi ini merupakan versi pengembangan mandiri, bukan salinan otomatis dari website Canva.
+- Konten dan fitur dibuat lokal tanpa CDN, font eksternal, atau koneksi internet.
+- Beberapa layanan Microsoft yang dibahas (misalnya OneDrive, Teams, Forms) memerlukan internet saat digunakan.
+- Progres tersimpan di browser/perangkat yang sama. Menghapus data browser dapat menghapus progres.
+- Untuk mengganti materi atau soal, edit file index.html menggunakan editor teks.
